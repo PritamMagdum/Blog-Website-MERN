@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoutes from "./routes/userRoute.js";
+import authRoutes from "./routes/authRoute.js";
 
 dotenv.config();
 const app = express();
@@ -21,4 +22,6 @@ app.listen(8080, () => {
 });
 
 // Middlewares
+app.use(express.json());
 app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
