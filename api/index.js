@@ -1,8 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import userRoutes from "./routes/userRoute.js";
 
 dotenv.config();
+const app = express();
 
 mongoose
   .connect(process.env.MONGO)
@@ -13,9 +15,10 @@ mongoose
     console.log(err);
   });
 
-const app = express();
-
-app.listen(8080, (req, res) => {
+app.listen(8080, () => {
   //   ("Server started at 8080");
   console.log("Server started at 8080");
 });
+
+// Middlewares
+app.use("/api/user", userRoutes);
