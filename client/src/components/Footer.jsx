@@ -27,22 +27,27 @@ export default function FooterComponent() {
             <div className="flex gap-3 mt-6">
               <Footer.Icon
                 href="https://www.linkedin.com/in/pritam-magdum-63b242221/"
+                target="_blank"
                 icon={BsLinkedin}
               />
               <Footer.Icon
                 href="https://github.com/PritamMagdum"
+                target="_blank"
                 icon={BsGithub}
               />
               <Footer.Icon
                 href="https://twitter.com/pritam1622"
+                target="_blank"
                 icon={BsTwitter}
               />
               <Footer.Icon
                 href="https://www.instagram.com/pritam_magdum_72_12/"
+                target="_blank"
                 icon={BsInstagram}
               />
               <Footer.Icon
                 href="https://www.facebook.com/pritam.magdumpm"
+                target="_blank"
                 icon={BsFacebook}
               />
             </div>
