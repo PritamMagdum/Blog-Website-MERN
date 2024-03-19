@@ -23,7 +23,7 @@ export default function Dashboard() {
       </div>
 
       {/* Profile or Right Section */}
-      <div className="">{tab === "profile" && <DashProfile />}</div>
+      {tab === "profile" && <DashProfile />}
     </div>
   );
 }
