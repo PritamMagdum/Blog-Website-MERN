@@ -22,7 +22,12 @@ export default function DashProfile() {
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
   const [imageFileUploadError, setImageFileUploadError] = useState(null);
-  const [profileSuccessMessage, setProfileSuccessMessage] = useState(null);
+  const [profileImageSuccessMessage, setProfileImageSuccessMessage] =
+    useState(null);
+  const [profileUpdateSuccessMessage, setProfileUpdateSuccessMessage] =
+    useState(null);
+  const [profileUpdateErrorMessage, setProfileUpdateErrorMessage] =
+    useState(null);
   const [formData, setFormData] = useState({});
   const filePickerRef = useRef();
   const dispatch = useDispatch();
@@ -86,9 +91,9 @@ export default function DashProfile() {
   };
 
   const handleProfileSuccessMessage = () => {
-    setProfileSuccessMessage("Image Uploaded Successfully!");
+    setProfileImageSuccessMessage("Image Uploaded Successfully!");
     setTimeout(() => {
-      setProfileSuccessMessage(null);
+      setProfileImageSuccessMessage(null);
     }, 5000);
   };
   // console.log(imageFile);
@@ -99,7 +104,10 @@ export default function DashProfile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setProfileUpdateErrorMessage(null);
+    setProfileUpdateSuccessMessage(null);
     if (Object.keys(formData).length === 0) {
+      setProfileUpdateErrorMessage("No changes made");
       return;
     }
 
@@ -115,11 +123,16 @@ export default function DashProfile() {
       const data = await res.json();
       if (!res.ok) {
         dispatch(updateFailure(data.message));
+        setProfileUpdateErrorMessage(
+          "Could not update profie! Please try again"
+        );
       } else {
         dispatch(updateSuccess(data));
+        setProfileUpdateSuccessMessage("Profile Updated Successfully");
       }
     } catch (error) {
       dispatch(updateFailure(error.message));
+      setProfileUpdateErrorMessage("Could not update profie! Please try again");
     }
   };
   return (
@@ -171,8 +184,8 @@ export default function DashProfile() {
         {imageFileUploadError && (
           <Alert color="failure">{imageFileUploadError}</Alert>
         )}
-        {profileSuccessMessage && (
-          <Alert color="success">{profileSuccessMessage}</Alert>
+        {profileImageSuccessMessage && (
+          <Alert color="success">{profileImageSuccessMessage}</Alert>
         )}
         <TextInput
           type="text"
@@ -202,6 +215,12 @@ export default function DashProfile() {
         <span className="cursor-pointer">Delete Account</span>
         <span className="cursor-pointer">Sign Out</span>
       </div>
+      {profileUpdateSuccessMessage && (
+        <Alert color="success">{profileUpdateSuccessMessage}</Alert>
+      )}
+      {profileUpdateErrorMessage && (
+        <Alert color="failure">{profileUpdateErrorMessage}</Alert>
+      )}
     </div>
   );
 }
