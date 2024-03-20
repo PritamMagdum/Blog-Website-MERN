@@ -1,4 +1,4 @@
-import { Button, FileInput, Select, TextInput } from "flowbite-react";
+import { Alert, Button, FileInput, Select, TextInput } from "flowbite-react";
 import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -76,7 +76,7 @@ export default function CreatePost() {
             <option value="java">Java</option>
           </Select>
         </div>
-        <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
+        <div className="flex gap-4 items-center justify-between border-[1.5px] rounded-md p-3">
           <FileInput
             accept="image/*"
             type="file"
@@ -102,6 +102,14 @@ export default function CreatePost() {
             )}
           </Button>
         </div>
+        {imageUploadError && <Alert color="failure">{imageUploadError}</Alert>}
+        {formData.image && (
+          <img
+            src={formData.image}
+            alt="Upload"
+            className="w-full object-cover"
+          />
+        )}
         <ReactQuill
           theme="snow"
           className="h-72 mb-12"
