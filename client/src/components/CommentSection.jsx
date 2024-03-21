@@ -33,6 +33,7 @@ export default function CommentSection({ postId }) {
       if (res.ok) {
         setComment("");
         setCommentError(null);
+        setComments([data, ...comments]);
       }
     } catch (error) {
       setCommentError(error.message);
@@ -57,7 +58,7 @@ export default function CommentSection({ postId }) {
   return (
     <div className="max-w-2xl mx-auto w-full p-3">
       {currentUser ? (
-        <div className="flex items-center gap-1 my-5 text-gray-500 text-sm">
+        <div className="flex items-center gap-1 my-5 text-gray-500 text-sm dark:text-gray-200">
           <p>Signed in as :</p>
           <img
             className="h-5 w-5 object-cover rounded-full"
@@ -95,11 +96,11 @@ export default function CommentSection({ postId }) {
             value={comment}
           />
           <div className="flex justify-between mt-5 items-center">
-            <p className="text-gray-500 text-xs">
+            <p className="text-gray-500 text-xs dark:text-gray-300">
               {200 - comment.length} Characters remaining
             </p>
-            <Button gradientDuoTone="purpleToBlue" outline type="submit">
-              Submit
+            <Button gradientDuoTone="purpleToBlue" type="submit">
+              Comment
             </Button>
           </div>
           {commentError && (
