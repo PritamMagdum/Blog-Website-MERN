@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Button, Modal, Table } from "flowbite-react";
-import { Link } from "react-router-dom";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { FaCheck, FaTimes } from "react-icons/fa";
 
 export default function DashUsers() {
   const { currentUser } = useSelector((state) => state.user);
@@ -99,7 +99,13 @@ export default function DashUsers() {
                   </Table.Cell>
                   <Table.Cell>{user.username}</Table.Cell>
                   <Table.Cell>{user.email}</Table.Cell>
-                  <Table.Cell>{user.isAdmin}</Table.Cell>
+                  <Table.Cell>
+                    {user.isAdmin ? (
+                      <FaCheck className="text-green-500" />
+                    ) : (
+                      <FaTimes className="text-red-500" />
+                    )}
+                  </Table.Cell>
                   <Table.Cell>
                     <span
                       onClick={() => {
