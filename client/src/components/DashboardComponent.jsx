@@ -6,6 +6,8 @@ import {
   HiDocumentText,
   HiOutlineUserGroup,
 } from "react-icons/hi";
+import { Button, Table } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 export default function DashboardComponent() {
   const [users, setUsers] = useState([]);
@@ -68,7 +70,7 @@ export default function DashboardComponent() {
   return (
     <div className="p-3 md:mx-auto">
       <div className="flex-wrap flex gap-4 justify-center">
-        <div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-lg">
+        <div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
           <div className="flex justify-between">
             <div className="">
               <h1 className="text-gray-400 text-md uppercase">Total Users</h1>
@@ -84,7 +86,7 @@ export default function DashboardComponent() {
             <div className="text-gray-400">Last Month</div>
           </div>
         </div>
-        <div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-lg">
+        <div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
           <div className="flex justify-between">
             <div className="">
               <h1 className="text-gray-400 text-md uppercase">
@@ -102,7 +104,7 @@ export default function DashboardComponent() {
             <div className="text-gray-400">Last Month</div>
           </div>
         </div>
-        <div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-lg">
+        <div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
           <div className="flex justify-between">
             <div className="">
               <h1 className="text-gray-400 text-md uppercase">Total Posts</h1>
@@ -117,6 +119,37 @@ export default function DashboardComponent() {
             </span>
             <div className="text-gray-400">Last Month</div>
           </div>
+        </div>
+      </div>
+      <div className="mt-2">
+        <div className="flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800">
+          <div className="flex justify-between p-3 text-sm font-semibold">
+            <h1 className="text-center p-2">Recent Users</h1>
+            <Button gradientDuoTone="purpleToPink" outline>
+              <Link to={"/dashboard?tab=users"}>See All</Link>
+            </Button>
+          </div>
+          <Table hoverable>
+            <Table.Head>
+              <Table.HeadCell>User Image</Table.HeadCell>
+              <Table.HeadCell>Username</Table.HeadCell>
+            </Table.Head>
+            {users &&
+              users.map((user, index) => (
+                <Table.Body key={index} className="divide-y">
+                  <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                    <Table.Cell>
+                      <img
+                        src={user.profilePicture}
+                        alt="User"
+                        className="w-10 h-10 rounded-full bg-gray-500"
+                      />
+                    </Table.Cell>
+                    <Table.Cell>{user.username}</Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              ))}
+          </Table>
         </div>
       </div>
     </div>
