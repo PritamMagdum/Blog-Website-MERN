@@ -66,6 +66,59 @@ export default function DashboardComponent() {
     }
   }, []);
   return (
-    
+    <div className="p-3 md:mx-auto">
+      <div className="flex-wrap flex gap-4 justify-center">
+        <div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-lg">
+          <div className="flex justify-between">
+            <div className="">
+              <h1 className="text-gray-400 text-md uppercase">Total Users</h1>
+              <p className="text-2xl">{totalUsers}</p>
+            </div>
+            <HiOutlineUserGroup className="bg-orange-600 text-white rounded-full text-5xl p-3 shadow-lg" />
+          </div>
+          <div className="flex gap-2 text-sm">
+            <span className="text-green-500 flex items-center">
+              <HiArrowNarrowUp />
+              {lastMonthUsers}
+            </span>
+            <div className="text-gray-400">Last Month</div>
+          </div>
+        </div>
+        <div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-lg">
+          <div className="flex justify-between">
+            <div className="">
+              <h1 className="text-gray-400 text-md uppercase">
+                Total Comments
+              </h1>
+              <p className="text-2xl">{totalComments}</p>
+            </div>
+            <HiAnnotation className="bg-indigo-600 text-white rounded-full text-5xl p-3 shadow-lg" />
+          </div>
+          <div className="flex gap-2 text-sm">
+            <span className="text-green-500 flex items-center">
+              <HiArrowNarrowUp />
+              {lastMonthComments}
+            </span>
+            <div className="text-gray-400">Last Month</div>
+          </div>
+        </div>
+        <div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-lg">
+          <div className="flex justify-between">
+            <div className="">
+              <h1 className="text-gray-400 text-md uppercase">Total Posts</h1>
+              <p className="text-2xl">{totalPosts}</p>
+            </div>
+            <HiDocumentText className="bg-green-600 text-white rounded-full text-5xl p-3 shadow-lg" />
+          </div>
+          <div className="flex gap-2 text-sm">
+            <span className="text-green-500 flex items-center">
+              <HiArrowNarrowUp />
+              {lastMonthPosts}
+            </span>
+            <div className="text-gray-400">Last Month</div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
