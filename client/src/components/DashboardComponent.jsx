@@ -121,7 +121,7 @@ export default function DashboardComponent() {
           </div>
         </div>
       </div>
-      <div className="mt-2">
+      <div className="flex flex-wrap gap-4 py-3 mx-auto justify-center">
         <div className="flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800">
           <div className="flex justify-between p-3 text-sm font-semibold">
             <h1 className="text-center p-2">Recent Users</h1>
@@ -146,6 +146,31 @@ export default function DashboardComponent() {
                       />
                     </Table.Cell>
                     <Table.Cell>{user.username}</Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              ))}
+          </Table>
+        </div>
+        <div className="flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800">
+          <div className="flex justify-between p-3 text-sm font-semibold">
+            <h1 className="text-center p-2">Recent Comments</h1>
+            <Button gradientDuoTone="purpleToPink" outline>
+              <Link to={"/dashboard?tab=comments"}>See All</Link>
+            </Button>
+          </div>
+          <Table hoverable>
+            <Table.Head>
+              <Table.HeadCell>Comment Content</Table.HeadCell>
+              <Table.HeadCell>Likes</Table.HeadCell>
+            </Table.Head>
+            {comments &&
+              comments.map((comment, index) => (
+                <Table.Body key={index} className="divide-y">
+                  <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                    <Table.Cell className="">
+                      <p className="line-clamp-2 max-w-52">{comment.content}</p>
+                    </Table.Cell>
+                    <Table.Cell>{comment.numberOfLikes}</Table.Cell>
                   </Table.Row>
                 </Table.Body>
               ))}
