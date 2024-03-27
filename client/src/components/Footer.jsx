@@ -95,7 +95,7 @@ export default function FooterComponent() {
           </div>
         </div>
         <Footer.Divider />
-        <div className="flex items-center justify-center">
+        <div className="flex flex-wrap items-center justify-center">
           <Footer.Copyright
             href="/"
             className="text-md"
@@ -104,7 +104,7 @@ export default function FooterComponent() {
             year={new Date().getFullYear()}
           />
 
-          <div className="developer-section mx-1 text-gray-500 dark:text-gray-400">
+          <div className="developer-section mx-1 py-4 text-gray-500 dark:text-gray-400">
             || Developer -{" "}
             <a
               href="https://www.linkedin.com/in/pritam-magdum-63b242221/"
