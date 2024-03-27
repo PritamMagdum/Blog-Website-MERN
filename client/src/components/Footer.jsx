@@ -98,11 +98,21 @@ export default function FooterComponent() {
         <div className="flex items-center justify-center">
           <Footer.Copyright
             href="/"
+            className="text-md"
+            color="white"
             by="Magdum Blog"
             year={new Date().getFullYear()}
           />
-          <div className="developed text-gray-500 ml-1">
-            || Developer - <span>Pritam Magdum</span>
+
+          <div className="developer-section mx-1 text-gray-500 dark:text-gray-400">
+            || Developer -{" "}
+            <a
+              href="https://www.linkedin.com/in/pritam-magdum-63b242221/"
+              target="_"
+              className="developer text-gray-50 bg-gray-500 dark:text-black dark:bg-white font-medium p-2 rounded-md hover:bg-gray-600 hover:text-gray-50 dark:hover:bg-gray-300"
+            >
+              Pritam Magdum
+            </a>
           </div>
         </div>
       </div>
