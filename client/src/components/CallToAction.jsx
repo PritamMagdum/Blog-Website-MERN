@@ -10,7 +10,12 @@ export default function CallToAction() {
         <p className=" py-2">
           Join Magdum Class for gain practical knowledge about JavaScript
         </p>
-        <Button gradientDuoTone="purpleToPink" className="rounded-tl-xl  ">
+        <Button
+          target="_blank"
+          href="https://www.coursera.org"
+          gradientDuoTone="purpleToPink"
+          className="rounded-tl-xl  "
+        >
           <a
             href="https://www.coursera.org"
             target="_blank"
